@@ -146,6 +146,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   List<String> l2 = List.from("FULLSTACK".split(''));
   late AnimationController ac;
   late Animation<double> typingAnimation;
+  bool isReverse = false;
   @override
   void initState() {
     super.initState();
@@ -165,8 +166,9 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
       if (status == AnimationStatus.completed) {
         ac.repeat();
       }
+      // AnimationStatus.reverse
     });
-    typingAnimation = Tween<double>(begin: 1, end: 18)
+    typingAnimation = Tween<double>(begin: 0, end: 18)
         .animate(CurvedAnimation(parent: ac, curve: Curves.linear));
     // oc = AnimationController(
     //     vsync: this, duration: const Duration(milliseconds: 236));
@@ -232,13 +234,13 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                     SizedBox(
                       // key: k,
                       width: w,
-                      height: h * 0.90,
+                      height: h * 0.95,
                       child: Stack(
                         // key: k,
                         children: [
                           Positioned(
-                            top: -60,
-                            left: -10,
+                            top: -(w * 0.1),
+                            left: -(w * 0.065),
                             child: Transform(
                               origin: Offset(w * 0.3, h * 0.45),
                               transform: Matrix4.rotationZ(45),
@@ -290,7 +292,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                           child: Opacity(
                                             opacity: value,
                                             child: Image.asset(
-                                              "./images/photo.jpg",
+                                              "./images/Photo.jpg",
                                               width: w * 0.28 * value,
                                               height: h * 0.71 * value,
                                               fit: BoxFit.fill,
@@ -527,7 +529,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                             right: (w / 100) * 6,
                             top: (h / 100) * 35,
                             child: AnimatedBuilder(
-                              
                               animation: typingAnimation,
                               builder: (context, child) {
                                 return Text(
@@ -539,6 +540,34 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                               },
                             ),
                           ),
+
+                          TweenAnimationBuilder(
+                              curve: Curves.linear,
+                              tween: Tween<double>(begin: 0, end: 1),
+                              duration: const Duration(milliseconds: 1600),
+                              builder: (context, avalue, child) {
+                                return Positioned(
+                                  right: (w / 100) * 5,
+                                  top: (h / 100) * 50 * avalue,
+                                  child: ChangeNotifierProvider(
+                                      create: (context) => HomeProvider(),
+                                      child: Consumer<HomeProvider>(
+                                          builder: (context, value, child) {
+                                        return Opacity(
+                                          opacity: avalue,
+                                          child: button.linksButton(
+                                              w,
+                                              h,
+                                              "Download Resume",
+                                              6,
+                                              context,
+                                              value,
+                                              "../../assets/images/Resume.pdf"),
+                                        );
+                                      })),
+                                );
+                              })
+
                           // TweenAnimationBuilder(
                           //   curve: Curves.easeIn,
                           //   tween: Tween<double>(begin: 1, end: 17),

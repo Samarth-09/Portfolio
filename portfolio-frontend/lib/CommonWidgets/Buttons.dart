@@ -1,3 +1,4 @@
+import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:portfolio/Providers/Home/HomeProvider.dart';
 import 'package:portfolio/Providers/Projects/ProjectsProvider.dart';
@@ -29,8 +30,8 @@ class Buttons {
         }
       },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.bounceOut,
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.bounceOut,
           margin: EdgeInsets.symmetric(horizontal: (w / 100) * 1),
           padding: EdgeInsets.symmetric(
               vertical: (h / 100) * 1, horizontal: (w / 100) * 0.75),
@@ -119,6 +120,13 @@ class Buttons {
               "https://www.hackerrank.com/profile/IT068_Samarth", w, context);
         } else if (i == -1) {
           globals.launchURL(url!, w, context);
+        } else if (i == 6) {
+          // File f = File("../../assets/images/Resume.pdf");
+          // print(f.absolute);
+          // await FileSaver().saveFile(name: "Resume.pdf", file: f);
+          html.AnchorElement anchorElement = html.AnchorElement(href: url);
+          anchorElement.download = url;
+          anchorElement.click();
         }
       },
       child: AnimatedContainer(

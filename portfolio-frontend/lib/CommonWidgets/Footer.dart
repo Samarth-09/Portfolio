@@ -9,7 +9,6 @@ class Footer {
       "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-shadow-tal-revivo.png",
       "https://img.icons8.com/color/144/codechef.png",
       "https://img.icons8.com/fluency/48/instagram-new.png"
-      
     ];
     return Container(
       margin: EdgeInsets.only(top: (h / 100) * 8),
@@ -24,9 +23,9 @@ class Footer {
               'images/logo.png',
               width: (w / 100) * 12,
               height: (h / 100) * 7,
-              fit: BoxFit.fill),
+              fit: BoxFit.contain),
           Container(
-            margin: EdgeInsets.only(top: (h / 100) * 4),
+            margin: EdgeInsets.only(top: (h / 100) * 3),
             child: Text(
               "Showcasing my programming career till now!",
               style: globals.ts((w / 100) * 1.25, globals.blackish, null),
@@ -35,7 +34,7 @@ class Footer {
           Container(
               height: (h / 100) * 6,
               margin:
-                  EdgeInsets.only(top: (h / 100) * 4, bottom: (h / 100) * 2),
+                  EdgeInsets.only(top: (h / 100) * 3, bottom: (h / 100) * 2),
               width: w * 0.3,
               child: ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
@@ -86,7 +85,9 @@ class Footer {
               "https://www.codechef.com/users/samarth0909", w, context);
         } else if (i == 4) {
           globals.launchURL(
-              "https://www.instagram.com/samarth_9_9?igsh=MWpwcmN1MXQyZGlzdQ==", w, context);
+              "https://www.instagram.com/samarth_9_9?igsh=MWpwcmN1MXQyZGlzdQ==",
+              w,
+              context);
         }
       },
       child: Container(
@@ -94,9 +95,9 @@ class Footer {
           color: globals.transparent,
           child: Image.network(
             l[i],
-            width: (w / 100) * 2,
-            height: (h / 100) * 3,
-            fit: BoxFit.fill,
+            width: (w / 100) * 2.5,
+            // height: (h / 100) * 3,
+            fit: BoxFit.contain,
           )),
     );
   }
