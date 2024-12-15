@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/routes.dart';
 import 'package:portfolio/screens/ContactMe.dart';
+import 'package:portfolio/screens/Experience.dart';
 import 'package:portfolio/screens/Projects.dart';
 import 'package:portfolio/screens/Skills.dart';
 import 'package:portfolio/screens/home.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
         routes.home: (context) => const home(),
         routes.projects: (context) => const Projects(),
         routes.contactMe: (context) => const ContactMe(),
-        routes.skills: (context) => const Skills()
+        routes.skills: (context) => const Skills(),
+        routes.Experience: (context) => const Experience()
       },
     );
   }

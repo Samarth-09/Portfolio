@@ -33,7 +33,12 @@ class Appbar {
         ChangeNotifierProvider(
             create: (context) => HomeProvider(),
             child: Consumer<HomeProvider>(builder: (context, value, child) {
-              return bttn.appBarButton(w, h, "Contact Me", 3, context, value);
+              return bttn.appBarButton(w, h, "Experience", 3, context, value);
+            })),
+        ChangeNotifierProvider(
+            create: (context) => HomeProvider(),
+            child: Consumer<HomeProvider>(builder: (context, value, child) {
+              return bttn.appBarButton(w, h, "Contact Me", 4, context, value);
             }))
       ],
     );

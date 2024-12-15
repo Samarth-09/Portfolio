@@ -26,6 +26,9 @@ class Buttons {
           await Navigator.pushNamed(context, routes.skills);
         } else if (i == 3) {
           globals.currentTab = 3;
+          await Navigator.pushNamed(context, routes.Experience);
+        } else if (i == 4) {
+          globals.currentTab = 4;
           await Navigator.pushNamed(context, routes.contactMe);
         }
       },
