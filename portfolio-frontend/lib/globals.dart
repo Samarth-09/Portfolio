@@ -16,7 +16,7 @@ class globals {
 
   static void launchURL(String s, double w, BuildContext context) async {
     Uri u = Uri.parse(s);
-    if (await launchUrl(u)) {
+    if (!await launchUrl(u)) {
       SnackBar s = SnackBar(
           backgroundColor: globals.brownish,
           content: Text("Website is Unreachable!!",

@@ -16,20 +16,21 @@ class Skills extends StatefulWidget {
 class _SkillsState extends State<Skills> with TickerProviderStateMixin {
   Appbar appbar = Appbar();
   Footer footer = Footer();
-  List<String> langs = ["C/C++", "Dart", "Javascript", "Java", "Python", "SQL"];
+  List<String> langs = ["C/C++", "Dart", "Javascript", "Java", "C#", "SQL"];
   List<String> langIcons = [
     "https://img.icons8.com/fluency/144/c-plus-plus-logo.png",
     // "https://img.icons8.com/color/144/000000/c%2B%2B.png"
     "https://img.icons8.com/color/144/dart.png",
     "https://img.icons8.com/color/144/javascript--v1.png",
     "https://img.icons8.com/fluency/144/java-coffee-cup-logo.png",
-    "https://img.icons8.com/color/144/python.png",
+    "https://img.icons8.com/color/48/c-sharp-logo.png",
+    "https://img.icons8.com/ios/50/sql.png"
   ];
-  List<String> backendtechs = ["NodeJs", "ExpressJs", "SpringBoot"];
+  List<String> backendtechs = ["NodeJs", "ExpressJs", "Asp.Net Core"];
   List<String> backendtechIcons = [
     "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-nodejs-is-an-open-source-cross-platform-javascript-run-time-environment-logo-shadow-tal-revivo.png",
     "https://img.icons8.com/fluency/144/express-js.png",
-    "https://img.icons8.com/color/144/spring-logo.png"
+    "https://img.icons8.com/color/48/microsoft.png"
   ];
   List<String> frontendTechs = ["Flutter", "HTML", "CSS", "ReactJs"];
   List<String> frontendTechIcons = [
@@ -38,8 +39,15 @@ class _SkillsState extends State<Skills> with TickerProviderStateMixin {
     "https://img.icons8.com/fluency/144/css3.png",
     "https://img.icons8.com/office/40/react.png"
   ];
-  List<String> databases = ["FireBase", "MongoDB", "MySQl", "PostgreSQL"];
+  List<String> databases = [
+    "GraphQL",
+    "FireBase",
+    "MongoDB",
+    "MySQl",
+    "PostgreSQL"
+  ];
   List<String> databaseIcons = [
+    "https://img.icons8.com/external-tal-revivo-color-tal-revivo/24/external-graphql-an-open-source-data-query-and-manipulation-language-for-api-logo-color-tal-revivo.png",
     "https://img.icons8.com/color/144/firebase.png",
     "https://img.icons8.com/color/96/mongo-db.png",
     "https://img.icons8.com/fluency/144/my-sql.png",

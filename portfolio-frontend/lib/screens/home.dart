@@ -101,6 +101,11 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   Footer footer = Footer();
   Buttons button = Buttons();
   Map<String, dynamic> mp = {
+    "p0": {
+      "img": "images/project/p0/img1.png",
+      "name": "EventPlex",
+      "link": "https://github.com/Samarth-09/EventPlex"
+    },
     "p1": {
       // "img": "assets/assets/images/smartdiagnosehub.jpg",
       "img": "images/smartdiagnosehub.jpg",
@@ -567,105 +572,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                       })),
                                 );
                               })
-
-                          // TweenAnimationBuilder(
-                          //   curve: Curves.easeIn,
-                          //   tween: Tween<double>(begin: 1, end: 17),
-                          //   duration: const Duration(seconds: 4),
-                          //   builder: (context, value, child) {
-                          //     return Positioned(
-                          //       right: (w / 100) * 6 * 1,
-                          //       top: (h / 100) * 35,
-                          //       child: Opacity(
-                          //         opacity: 1,
-                          //         child: Column(
-                          //           crossAxisAlignment:
-                          //               CrossAxisAlignment.start,
-                          //           children: [
-                          //             // Container(
-                          //             //     margin: EdgeInsets.only(
-                          //             //         top: (h / 100) * 4),
-                          //             //     child: Text(
-                          //             //       "Hello, I am,",
-                          //             //       style: globals.ts(
-                          //             //           (w / 100) * 3,
-                          //             //           globals.blackish,
-                          //             //           FontWeight.bold),
-                          //             //     )),
-                          //             Text(
-                          //               "SAMARTH R. PAREKH"
-                          //                   .substring(0, value.toInt()),
-                          //               style: globals.ts((w / 100) * 5,
-                          //                   globals.brownish, FontWeight.bold),
-                          //             ),
-                          //           ],
-                          //         ),
-                          //       ),
-                          //     );
-                          //   },
-                          // ),
-                          // TweenAnimationBuilder(
-                          //   curve: Curves.easeIn,
-                          //   duration: const Duration(milliseconds: 1500),
-                          //   tween: Tween<double>(begin: 0, end: 1),
-                          //   builder: (BuildContext context, dynamic value,
-                          //       Widget? child) {
-                          //     return Positioned(
-                          //       right: (w / 100) * 6 * value,
-                          //       top: (h / 100) * 10,
-                          //       child: Opacity(
-                          //         opacity: value,
-                          //         child: Stack(children: [
-                          //           Image.asset(
-                          //             "/images/home1.png",
-                          //             width: w * 0.3,
-                          //             height: h * 0.7,
-                          //             fit: BoxFit.fill,
-                          //           ),
-                          //           Positioned(
-                          //               right: (w / 100) * 2,
-                          //               top: (h / 100) * 12,
-                          //               child: Container(
-                          //                   padding: EdgeInsets.symmetric(
-                          //                       vertical: (h / 100) * 1.25,
-                          //                       horizontal: (w / 100) * 1),
-                          //                   color: globals.brownish,
-                          //                   child: Text("Design",
-                          //                       style: globals.ts(
-                          //                           (w / 100) * 1.5,
-                          //                           Colors.white,
-                          //                           FontWeight.bold)))),
-                          //           Positioned(
-                          //               right: (w / 100) * 11,
-                          //               top: (h / 100) * 30,
-                          //               child: Container(
-                          //                   padding: EdgeInsets.symmetric(
-                          //                       vertical: (h / 100) * 1.25,
-                          //                       horizontal: (w / 100) * 1),
-                          //                   color: globals.brownish,
-                          //                   child: Text("Coding",
-                          //                       style: globals.ts(
-                          //                           (w / 100) * 1.5,
-                          //                           Colors.white,
-                          //                           FontWeight.bold)))),
-                          //           Positioned(
-                          //               right: (w / 100) * 18,
-                          //               top: (h / 100) * 50,
-                          //               child: Container(
-                          //                   padding: EdgeInsets.symmetric(
-                          //                       vertical: (h / 100) * 1.25,
-                          //                       horizontal: (w / 100) * 1),
-                          //                   color: globals.brownish,
-                          //                   child: Text("Debugging",
-                          //                       style: globals.ts(
-                          //                           (w / 100) * 1.5,
-                          //                           Colors.white,
-                          //                           FontWeight.bold))))
-                          //         ]),
-                          //       ),
-                          //     );
-                          //   },
-                          // )
                         ],
                       ),
                     ),
@@ -673,14 +579,12 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                         color: globals.transparent,
                         margin: EdgeInsets.only(top: (h / 100) * 10),
                         width: w,
-                        // height: h * 0.8,
-                        // padding: EdgeInsets.symmetric(horizontal: w*0.1),
                         child: ChangeNotifierProvider(
                             create: (context) => HomeProvider(),
                             child: Consumer<HomeProvider>(
                                 builder: (context, value, child) {
                               sc.addListener(() {
-                                if ((sc.position.pixels) >= 200) {
+                                if ((sc.position.pixels) >= 230) {
                                   value.x = 1;
                                   value.changeVisibility();
                                   // print(sc.position.pixels);
@@ -717,7 +621,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                   margin: EdgeInsets.only(
                                                       top: (h / 100) * 3),
                                                   child: Text(
-                                                    "Passionate and skilled FULL STACK DEVELOPER with a strong focus on FLUTTER application development. I have an edge on making REST APIs using Node-Express. Problem-solving is the main excitement for me and always open to explore new things. I believe in hard work with smartness and dedication.",
+                                                    "Hello! I’m Samarth Parekh, a passionate Software Developer from Vadodara, dedicated to building value-driven and impactful solutions. With expertise in Flutter and strong knowledge of Node.js, Express, and GraphQL, I thrive on creating efficient and clean-code applications. Currently, I’m working as a .NET Developer, where I’m expanding my skill set while exploring new technologies and methodologies. An avid learner, I’m always excited to embrace new challenges and opportunities to grow as a developer.",
                                                     textAlign:
                                                         TextAlign.justify,
                                                     style: globals
@@ -747,7 +651,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                       child: Consumer<HomeProvider>(
                           builder: (context, value, child) {
                         sc.addListener(() {
-                          if ((sc.position.pixels).floor() >= 550) {
+                          if ((sc.position.pixels).floor() >= 580) {
                             value.x = 1;
                             value.changeVisibility();
                             // print('1 ${c++}');
@@ -920,7 +824,18 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                   margin: EdgeInsets.only(
                                                       top: (h / 100) * 5),
                                                   child: Text(
-                                                      "Solved 250+ problems, Highest Rating of 1553, 5248/21263 of global rank in Weekly Contest 364 and 65 days of Max Streak on LeetCode",
+                                                      "--> 350+ DSA problems\n--> 50+ SQl Problems65 days of Max Streak",
+                                                      style: globals.ts(
+                                                          (w / 100) * 1.25,
+                                                          globals.blackish,
+                                                          null)),
+                                                ),
+                                                Container(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  margin: const EdgeInsets.only(
+                                                      top: 5),
+                                                  child: Text("...on Leetcode",
                                                       style: globals.ts(
                                                           (w / 100) * 1.25,
                                                           globals.blackish,
@@ -936,7 +851,18 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                   margin: EdgeInsets.only(
                                                       top: (h / 100) * 1.5),
                                                   child: Text(
-                                                      "2 star, Highest Rating of 1441 and 1315/15831 of global rank in August Long 2022 Contest on CodeChef",
+                                                      "--> 2 star, Highest Rating of 1441\n--> Highest global rank 1315/15831",
+                                                      style: globals.ts(
+                                                          (w / 100) * 1.25,
+                                                          globals.blackish,
+                                                          null)),
+                                                ),
+                                                Container(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  margin: const EdgeInsets.only(
+                                                      top: 5),
+                                                  child: Text("...on Codechef",
                                                       style: globals.ts(
                                                           (w / 100) * 1.25,
                                                           globals.blackish,
@@ -952,12 +878,23 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                   margin: EdgeInsets.only(
                                                       top: (h / 100) * 1.5),
                                                   child: Text(
-                                                      "5 star in Problem Solving on HackerRank",
+                                                      "--> 5 star in Problem Solving",
                                                       style: globals.ts(
                                                           (w / 100) * 1.25,
                                                           globals.blackish,
                                                           null)),
                                                 ),
+                                                Container(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  margin: const EdgeInsets.only(
+                                                      top: 5),
+                                                  child: Text("...on HakerRank",
+                                                      style: globals.ts(
+                                                          (w / 100) * 1.25,
+                                                          globals.blackish,
+                                                          null)),
+                                                )
                                               ],
                                             ))
                                         .animate(target: value.x)
@@ -968,73 +905,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                             end: 0)
                                   ]);
                             }))),
-                    // ChangeNotifierProvider(
-                    //     create: (context) => HomeProvider(),
-                    //     child: Consumer<HomeProvider>(
-                    //         builder: (context, value, child) {
-                    //       sc.addListener(() {
-                    //         if ((sc.position.pixels * 100 / totalHeight)
-                    //                 .floor() >=
-                    //             43) {
-                    //           value.x = 1;
-                    //           value.changeVisibility();
-                    //           // print(sc.position.pixels);
-                    //         }
-                    //       });
-
-                    //       return Container(
-                    //               width: w * 0.9,
-                    //               margin: EdgeInsets.only(top: (h / 100) * 8),
-                    //               child: Text(
-                    //                   "\"Networking is not just about connecting people. It's about connecting possibilities, potential. It's the intricate web that weaves success.\"",
-                    //                   textAlign: TextAlign.center,
-                    //                   style: globals
-                    //                       .ts((w / 100) * 1.75,
-                    //                           globals.blackish, null)
-                    //                       .copyWith(
-                    //                           fontStyle: FontStyle.italic)))
-                    //           .animate(target: value.x)
-                    //           .fade(
-                    //               duration: const Duration(milliseconds: 2000),
-                    //               begin: 0)
-                    //           .scaleXY(
-                    //               curve: Curves.easeIn,
-                    //               duration: const Duration(milliseconds: 1500),
-                    //               begin: 0,
-                    //               end: 1);
-                    //       // sc.removeListener(() { });
-                    //     })),
-                    // ChangeNotifierProvider(
-                    //     create: (context) => HomeProvider(),
-                    //     child: Consumer<HomeProvider>(
-                    //         builder: (context, value, child) {
-                    //       sc.addListener(() {
-                    //         if (sc.position.pixels >= 300) {
-                    //           value.x = 1;
-                    //           value.changeVisibility();
-                    //           // print(sc.position.pixels);
-                    //         }
-                    //       });
-
-                    //       return Container(
-                    //         margin: EdgeInsets.only(top: (h / 100) * 4),
-                    //         child: Image.asset("/images/home2.png",
-                    //                 width: w * 0.8,
-                    //                 height: h * 0.55,
-                    //                 fit: BoxFit.fill)
-                    //             .animate(target: value.x)
-                    //             .fade(
-                    //                 duration: const Duration(seconds: 2),
-                    //                 begin: 0)
-                    //             .scaleXY(
-                    //                 curve: Curves.easeIn,
-                    //                 duration:
-                    //                     const Duration(milliseconds: 1500),
-                    //                 begin: 0,
-                    //                 end: 1),
-                    //       );
-                    //       // sc.removeListener(() { });
-                    //     })),
                     ChangeNotifierProvider(
                         create: (context) => HomeProvider(),
                         child: Consumer<HomeProvider>(
@@ -1065,7 +935,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                   end: 0);
                           // sc.removeListener(() { });
                         })),
-
                     ChangeNotifierProvider(
                         create: (context) => HomeProvider(),
                         child: Consumer<HomeProvider>(
@@ -1090,6 +959,12 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                         create: (context) => HomeProvider(),
                                         child: Consumer<HomeProvider>(
                                             builder: (context, value, child) {
+                                          return projectCard(w, h, "p0", value);
+                                        })),
+                                    ChangeNotifierProvider(
+                                        create: (context) => HomeProvider(),
+                                        child: Consumer<HomeProvider>(
+                                            builder: (context, value, child) {
                                           return projectCard(w, h, "p1", value);
                                         })),
                                     ChangeNotifierProvider(
@@ -1097,12 +972,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                         child: Consumer<HomeProvider>(
                                             builder: (context, value, child) {
                                           return projectCard(w, h, "p2", value);
-                                        })),
-                                    ChangeNotifierProvider(
-                                        create: (context) => HomeProvider(),
-                                        child: Consumer<HomeProvider>(
-                                            builder: (context, value, child) {
-                                          return projectCard(w, h, "p3", value);
                                         }))
                                   ],
                                 ),
@@ -1118,6 +987,14 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                 builder:
                                                     (context, value, child) {
                                               return projectCard(
+                                                  w, h, "p3", value);
+                                            })),
+                                        ChangeNotifierProvider(
+                                            create: (context) => HomeProvider(),
+                                            child: Consumer<HomeProvider>(
+                                                builder:
+                                                    (context, value, child) {
+                                              return projectCard(
                                                   w, h, "p4", value);
                                             })),
                                         ChangeNotifierProvider(
@@ -1127,14 +1004,6 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                     (context, value, child) {
                                               return projectCard(
                                                   w, h, "p5", value);
-                                            })),
-                                        ChangeNotifierProvider(
-                                            create: (context) => HomeProvider(),
-                                            child: Consumer<HomeProvider>(
-                                                builder:
-                                                    (context, value, child) {
-                                              return projectCard(
-                                                  w, h, "p6", value);
                                             }))
                                       ],
                                     ))
@@ -1165,17 +1034,17 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
       width: w * 0.2,
       padding: EdgeInsets.only(bottom: (h / 100) * 2),
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: globals.whitish,
           boxShadow: [
             BoxShadow(
               color: globals.blackish.withAlpha(80), // Shadow color
-              spreadRadius: 3, // Spread radius
-              blurRadius: 3, // Blur radius
-              offset: Offset(0, 5), // Offset
+              spreadRadius: 1, // Spread radius
+              blurRadius: 1, // Blur radius
+              offset: Offset(0, 2), // Offset
             ),
           ],
-          border:
-              Border.all(color: globals.blackish.withAlpha(200), width: 1.5),
+          // border:
+          //     Border.all(color: globals.blackish.withAlpha(200), width: 1.5),
           borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20))),

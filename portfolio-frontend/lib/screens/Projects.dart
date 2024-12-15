@@ -20,9 +20,30 @@ class _ProjectsState extends State<Projects> {
   Buttons bttn = Buttons();
   Appbar appbar = Appbar();
   Footer footer = Footer();
-  Map<String, dynamic> p1 = {
+  Map<String, dynamic> p0 = {
+        "name": "EVENTPLEX",
+        "tech": [
+          "Flutter",
+          "NodeJs/ExpressJs",
+          "GraphQL",
+          "MongoDB",
+          "Firbase Storage"
+        ],
+        "desc":
+            "EventPlex is a mobile application where students can discover and participate in events based on their interesrs, and clubs can host events for students. Used Bloc-Cubit for state management and GraphQl for querying and mutating.",
+        "code": "https://github.com/Samarth-09/EventPlex",
+        "images": [1]
+      },
+      p1 = {
         "name": "SMARTDIAGNOSEHUB",
-        "tech": ["Flutter", "NodeJs/ExpressJs", "Flask", "MongoDB", "ML"],
+        "tech": [
+          "Flutter",
+          "NodeJs/ExpressJs",
+          "Flask",
+          "MongoDB",
+          "ML",
+          "JWT"
+        ],
         "desc":
             "SmartDiagnoseHub enables users to predict the presence of diseases like Diabetes, Parkinson’s, and Heart Disease based on report values. Users access detailed disease descriptions, relevant solutions, and can track their disease history. Frontend utilizes the industry-standard BloC-Cubits state management library. Node.js system handles 100 concurrent requests within a maximum of 122 milliseconds for managing user history. Disease prediction for users takes under 1-3 seconds. Code is structured with modular coding style and descriptive names. Implemented ML models include Decision Tree (96.17%) and Random Forest (98.25%) for disease prediction.",
         "code": "https://github.com/Samarth-09/SmartDaignoseHub",
@@ -81,9 +102,12 @@ class _ProjectsState extends State<Projects> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       double w = constraints.maxWidth, h = constraints.maxHeight;
-      List<Map<String, dynamic>> p = [p1, p2, p3, p4, p5, p6];
+      List<Map<String, dynamic>> p = [p0, p1, p2, p3, p4, p5, p6];
       List<Widget> projects = List.generate(
-          6, (index) => projectDetailCard(w, h, p[index], context, index + 1));
+          6, (index) => projectDetailCard(w, h, p[index], context, index));
+      // projects = <Widget>[
+      //   projectDetailCard(w, h, p[0], context, 0)
+      //   ,...projects];
       return Scaffold(
           appBar: appbar.appbar(w, h, context),
           body: Container(
