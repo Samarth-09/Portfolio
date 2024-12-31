@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/CommonWidgets/Appbar.dart';
 import 'package:portfolio/CommonWidgets/Buttons.dart';
+import 'package:portfolio/CommonWidgets/Drawer.dart';
 import 'package:portfolio/CommonWidgets/Footer.dart';
 import 'package:portfolio/Providers/Home/HomeProvider.dart';
 import 'package:portfolio/globals.dart';
@@ -146,6 +145,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   double prev = 0;
   double totalHeight = 0;
   GlobalKey k = GlobalKey();
+  MyDrawer myDrawer = MyDrawer();
 
   List<String> l1 = List.from("FLUTTER+NODE".split(''));
   List<String> l2 = List.from("FULLSTACK".split(''));
@@ -677,7 +677,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                       child: Consumer<HomeProvider>(
                           builder: (context, value, child) {
                         sc.addListener(() {
-                          if ((sc.position.pixels).floor() >= 550) {
+                          if ((sc.position.pixels).floor() >= 580) {
                             value.x = 1;
                             value.changeVisibility();
                             // print('2 ${c++}');
@@ -749,7 +749,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                       child: Consumer<HomeProvider>(
                           builder: (context, value, child) {
                         sc.addListener(() {
-                          if ((sc.position.pixels).floor() >= 550) {
+                          if ((sc.position.pixels).floor() >= 580) {
                             value.x = 1;
                             value.changeVisibility();
                             // print('1 ${c++}');
@@ -910,7 +910,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                         child: Consumer<HomeProvider>(
                             builder: (context, value, child) {
                           sc.addListener(() {
-                            if ((sc.position.pixels) >= 1300) {
+                            if ((sc.position.pixels) >= 1330) {
                               value.x = 1;
                               value.changeVisibility();
                               // print(sc.position.pixels);
@@ -1024,7 +1024,381 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                   ]))),
         );
       } else {
-        return Container();
+        List<String> l = [
+              "https://img.icons8.com/color/144/linkedin.png",
+              "https://img.icons8.com/glyph-neue/64/github.png",
+              "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/external-level-up-your-coding-skills-and-quickly-land-a-job-logo-shadow-tal-revivo.png",
+              "https://img.icons8.com/color/144/codechef.png",
+              // "https://img.icons8.com/fluency/48/instagram-new.png"
+            ],
+            urls = [
+              "https://www.linkedin.com/in/samarth-parekh-8948492a8/",
+              "https://github.com/Samarth-09",
+              "https://leetcode.com/srparekh0909/",
+              "https://www.codechef.com/users/samarth0909",
+            ];
+        return Scaffold(
+            drawer: myDrawer.drawer(w, h, context),
+            appBar: appbar.mAppbar(w),
+            body: SingleChildScrollView(
+                child: Container(
+                    // padding: EdgeInsets.symmetric(
+                    //   vertical: (h / 100) * 5,
+                    //   // horizontal: (w / 100) * 5
+                    // ),
+                    alignment: Alignment.center,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            // height: h,
+                            color: globals.whitish,
+                            padding:
+                                EdgeInsets.symmetric(vertical: (h / 100) * 2),
+                            child: Column(
+                              children: [
+                                TweenAnimationBuilder(
+                                    curve: Curves.ease,
+                                    tween: Tween<double>(begin: 0, end: 1),
+                                    duration:
+                                        const Duration(milliseconds: 1500),
+                                    builder: (context, value, child) {
+                                      return Container(
+                                        alignment: Alignment.center,
+                                        width: w * 0.65,
+                                        height: h * 0.4,
+                                        decoration: BoxDecoration(
+                                            color: globals.transparent,
+                                            border: Border.all(
+                                                color: globals.brownish,
+                                                width: (w / 100) * 1),
+                                            borderRadius: BorderRadius.circular(
+                                                (w / 100) * 1)),
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: w * 0.6,
+                                          height: h * 0.35,
+                                          decoration: BoxDecoration(
+                                              color: globals.transparent,
+                                              border: Border.all(
+                                                  color: globals.brownish,
+                                                  width: (w / 100) * 1),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      (w / 100) * 2)),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                                (w / 100) * 2),
+                                            child: Opacity(
+                                              opacity: value,
+                                              child: Image.asset(
+                                                "./images/Photo.jpg",
+                                                width: w * 0.55 * value,
+                                                height: h * 0.3 * value,
+                                                fit: BoxFit.fill,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                                Container(
+                                    margin: EdgeInsets.only(top: (h / 100) * 4),
+                                    child: Text(
+                                      "Hii, I am,",
+                                      style: globals.ts((w / 100) * 4,
+                                          globals.blackish, FontWeight.bold),
+                                    )),
+                                Container(
+                                  margin: EdgeInsets.only(top: (h / 100) * 2),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      AnimatedBuilder(
+                                        animation: typingAnimation,
+                                        builder: (context, child) {
+                                          ac.forward();
+                                          return Text(
+                                            "SAMARTH R. PAREKH".substring(0,
+                                                typingAnimation.value.toInt()),
+                                            style: globals.ts(
+                                                (w / 100) * 6,
+                                                globals.brownish,
+                                                FontWeight.bold),
+                                          );
+                                        },
+                                      ),
+                                      AnimatedBuilder(
+                                        animation: typingAnimation,
+                                        builder: (context, child) {
+                                          // print(typingAnimation.value);
+                                          return Opacity(
+                                              opacity: (typingAnimation.value
+                                                              .toInt() %
+                                                          2 ==
+                                                      0)
+                                                  ? 0
+                                                  : 1,
+                                              child: Container(
+                                                  color: globals.brownish,
+                                                  width: (w / 100) * 0.6,
+                                                  height: (h / 100) * 4));
+                                        },
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: (w / 100) * 10),
+                                    margin: EdgeInsets.only(top: (h / 100) * 2),
+                                    child: Text(
+                                      "Full-Stack Developer. You can have a look on my profiles.",
+                                      textAlign: TextAlign.center,
+                                      style: globals.ts((w / 100) * 3,
+                                          globals.blackish, FontWeight.bold),
+                                    )),
+                                Container(
+                                  margin: EdgeInsets.only(top: (h / 100) * 2),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: (w / 100) * 10),
+                                  child: Divider(
+                                      thickness: 0.5, color: globals.blackish),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: (h / 100) * 1),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        ...List.generate(
+                                            l.length,
+                                            (idx) => InkWell(
+                                                  onTap: () {
+                                                    globals.launchURL(
+                                                        urls[idx], w, context);
+                                                  },
+                                                  child: Container(
+                                                      // margin: EdgeInsets.only(
+                                                      //     right: (w / 100) * 2),
+                                                      color:
+                                                          globals.transparent,
+                                                      child: Image.network(
+                                                        l[idx],
+                                                        width: (w / 100) * 8,
+                                                        // height: (h / 100) * 3,
+                                                        fit: BoxFit.contain,
+                                                      )),
+                                                ))
+                                      ]),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: (h / 100) * 1),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: (w / 100) * 10),
+                                  child: Divider(
+                                      thickness: 0.5, color: globals.blackish),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(top: (h / 100) * 3),
+                                  child: TweenAnimationBuilder(
+                                      tween: Tween<double>(begin: 0, end: 1),
+                                      duration:
+                                          const Duration(milliseconds: 1600),
+                                      builder: (context, avalue, child) {
+                                        return ChangeNotifierProvider(
+                                            create: (context) => HomeProvider(),
+                                            child: Consumer<HomeProvider>(
+                                                builder:
+                                                    (context, value, child) {
+                                              return Opacity(
+                                                opacity: avalue,
+                                                child: button.mlinksButton(
+                                                    w,
+                                                    h,
+                                                    "See my Resume",
+                                                    6,
+                                                    context,
+                                                    // value,
+                                                    "../../assets/images/Resume.pdf"),
+                                              );
+                                            }));
+                                      }),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                              // height: h,
+                              color: globals.greyish,
+                              padding:
+                                  EdgeInsets.symmetric(vertical: (h / 100) * 2),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                        margin:
+                                            EdgeInsets.only(top: (h / 100) * 2),
+                                        child: Text(
+                                          "About Me",
+                                          style: globals.ts(
+                                              (w / 100) * 5,
+                                              globals.brownish,
+                                              FontWeight.bold),
+                                        )),
+                                    Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: (w / 100) * 4),
+                                        margin: EdgeInsets.only(
+                                            top: (h / 100) * 0.5),
+                                        child: Divider(
+                                            color: globals.brownish,
+                                            thickness: 0.5)),
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: (w / 100) * 4),
+                                      margin:
+                                          EdgeInsets.only(top: (h / 100) * 2),
+                                      child: Text(
+                                        "Hello! I’m Samarth Parekh, a passionate Software Developer from Vadodara, dedicated to building value-driven and impactful solutions. With expertise in Flutter and strong knowledge of Node.js, Express, and GraphQL, I thrive on creating efficient and clean-code applications. Currently, I’m working as a .NET Developer, where I’m expanding my skill set while exploring new technologies and methodologies. An avid learner, I’m always excited to embrace new challenges and opportunities to grow as a developer.",
+                                        textAlign: TextAlign.justify,
+                                        style: globals
+                                            .ts((w / 100) * 3.5,
+                                                globals.blackish, null)
+                                            .copyWith(height: 2),
+                                      ),
+                                    )
+                                  ])),
+                          Container(
+                              color: globals.whitish,
+                              padding:
+                                  EdgeInsets.symmetric(vertical: (h / 100) * 2),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                      margin:
+                                          EdgeInsets.only(top: (h / 100) * 2),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Achievements",
+                                        style: globals.ts((w / 100) * 5,
+                                            globals.brownish, FontWeight.bold),
+                                      )),
+                                  Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: (w / 100) * 4),
+                                      margin:
+                                          EdgeInsets.only(top: (h / 100) * 0.5),
+                                      child: Divider(
+                                          color: globals.brownish,
+                                          thickness: 0.5)),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: (w / 100) * 4),
+                                    margin: EdgeInsets.only(top: (h / 100) * 2),
+                                    child: Text(
+                                        "--> 350+ DSA problems\n--> 50+ SQl Problems65 days of Max Streak",
+                                        style: globals.ts((w / 100) * 4,
+                                            globals.blackish, null)),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: (w / 100) * 4),
+                                    alignment: Alignment.centerRight,
+                                    margin: const EdgeInsets.only(top: 5),
+                                    child: Text("...on Leetcode",
+                                        style: globals.ts((w / 100) * 3,
+                                            globals.blackish, null)),
+                                  ),
+                                  Container(
+                                      margin:
+                                          EdgeInsets.only(top: (h / 100) * 1.5),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: (w / 100) * 4),
+                                      child: Divider(
+                                          color: globals.brownish,
+                                          thickness: 1)),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: (w / 100) * 4),
+                                    margin:
+                                        EdgeInsets.only(top: (h / 100) * 1.5),
+                                    child: Text(
+                                        "--> 2 star, Highest Rating of 1441\n--> Highest global rank 1315/15831",
+                                        style: globals.ts((w / 100) * 4,
+                                            globals.blackish, null)),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: (w / 100) * 4),
+                                    alignment: Alignment.centerRight,
+                                    margin: const EdgeInsets.only(top: 5),
+                                    child: Text("...on Codechef",
+                                        style: globals.ts((w / 100) * 3,
+                                            globals.blackish, null)),
+                                  ),
+                                  Container(
+                                      margin:
+                                          EdgeInsets.only(top: (h / 100) * 1.5),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: (w / 100) * 4),
+                                      child: Divider(
+                                          color: globals.brownish,
+                                          thickness: 1)),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: (w / 100) * 4),
+                                    margin:
+                                        EdgeInsets.only(top: (h / 100) * 1.5),
+                                    child: Text("--> 5 star in Problem Solving",
+                                        style: globals.ts((w / 100) * 4,
+                                            globals.blackish, null)),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: (w / 100) * 4),
+                                    alignment: Alignment.centerRight,
+                                    margin: const EdgeInsets.only(top: 5),
+                                    child: Text("...on HakerRank",
+                                        style: globals.ts((w / 100) * 3,
+                                            globals.blackish, null)),
+                                  )
+                                ],
+                              )),
+                          Container(
+                            // margin: EdgeInsets.only(top: (h / 100) * 2),
+                            color: globals.greyish,
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      margin:
+                                          EdgeInsets.only(top: (h / 100) * 3),
+                                      child: Text(
+                                        "Projects",
+                                        style: globals.ts((w / 100) * 5,
+                                            globals.brownish, FontWeight.bold),
+                                      )),
+                                  Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: (w / 100) * 4),
+                                      margin:
+                                          EdgeInsets.only(top: (h / 100) * 0.5),
+                                      child: Divider(
+                                          color: globals.brownish,
+                                          thickness: 0.5)),
+                                  // projectCard(w, h, "p"+idx, hp);
+                                  SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                          children: List.generate(6, (idx) {
+                                        return mProjectCard(
+                                            w, h, "p" + idx.toString());
+                                      }))),
+                                ]),
+                          )
+                        ]))));
       }
     });
   }
@@ -1069,6 +1443,64 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
             child: button.linksButton(
                 w, h, "See Code", -1, context, hp, mp[s]['link']))
       ]),
+    );
+  }
+
+  Widget mProjectCard(double w, double h, String s) {
+    return InkWell(
+      focusColor: null,
+      hoverColor: null,
+      splashColor: null,
+      overlayColor: null,
+      highlightColor: null,
+      onTap: () {
+        globals.launchURL(mp[s]['link'], w, context);
+      },
+      child: Container(
+        margin: EdgeInsets.only(
+            left: (w / 100) * 13,
+            bottom: (h / 100) * 3,
+            top: (h / 100) * 3,
+            right: (w / 100) * 2),
+        width: w * 0.6,
+        padding: EdgeInsets.only(bottom: (w / 100) * 2),
+        decoration: BoxDecoration(
+            color: globals.whitish,
+            boxShadow: [
+              BoxShadow(
+                color: globals.blackish.withAlpha(80), // Shadow color
+                spreadRadius: 1, // Spread radius
+                blurRadius: 1, // Blur radius
+                offset: Offset(0, 2), // Offset
+              ),
+            ],
+            // border:
+            //     Border.all(color: globals.blackish.withAlpha(200), width: 1.5),
+            borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20))),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Image.asset(
+            mp[s]['img'],
+            width: w * 0.6,
+            height: h * 0.15,
+            fit: BoxFit.fill,
+          ),
+          Container(
+            margin: EdgeInsets.only(top: (h / 100) * 2),
+            padding: const EdgeInsets.all(10),
+            child: Text(
+              mp[s]['name'],
+              style:
+                  globals.ts((w / 100) * 5, globals.blackish, FontWeight.bold),
+            ),
+          )
+          // Container(
+          //     margin: EdgeInsets.only(top: (h / 100) * 2),
+          //     child: button.mlinksButton(
+          //         w, h, "See Code", -1, context, mp[s]['link']))
+        ]),
+      ),
     );
   }
 }

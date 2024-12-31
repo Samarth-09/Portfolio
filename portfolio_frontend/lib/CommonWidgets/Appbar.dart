@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/Providers/Home/HomeProvider.dart';
+import 'package:portfolio/globals.dart';
 import 'package:provider/provider.dart';
 import 'Buttons.dart';
 
@@ -41,6 +42,28 @@ class Appbar {
               return bttn.appBarButton(w, h, "Contact Me", 4, context, value);
             }))
       ],
+    );
+  }
+
+  AppBar mAppbar(double w) {
+    return AppBar(
+      // backgroundColor: const Color.fromARGB(255, 15, 13, 13),
+      backgroundColor: globals.whitish,
+      elevation: 0,
+      // foregroundColor: Colors.white,
+      scrolledUnderElevation: 0,
+      centerTitle: true,
+      title: Image.asset(
+        "/images/logo.png",
+        width: w * 0.3,
+        fit: BoxFit.contain,
+      ),
+      // leading: IconButton(
+      //     onPressed: () {
+      //       Scaffold.of(context).openDrawer();
+      //     },
+      //     icon: Icon(Icons.menu_open_rounded,
+      //         size: (w / 100) * 6, color: globals.brownish)),
     );
   }
 }

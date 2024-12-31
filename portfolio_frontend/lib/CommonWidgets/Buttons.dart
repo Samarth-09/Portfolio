@@ -150,6 +150,55 @@ class Buttons {
     );
   }
 
+  Widget mlinksButton(double w, double h, String s, int i, BuildContext context,
+      // HomeProvider hp,
+      [String? url]) {
+    return InkWell(
+      // onHover: (value) {
+      //   hp.changeHover(value);
+      // },
+      onTap: () async {
+        if (i == 1) {
+          globals.launchURL(
+              "https://www.linkedin.com/in/samarth-parekh-8948492a8/",
+              w,
+              context);
+        } else if (i == 2) {
+          globals.launchURL("https://github.com/Samarth-09", w, context);
+        } else if (i == 3) {
+          globals.launchURL("https://leetcode.com/srparekh0909/", w, context);
+        } else if (i == 4) {
+          globals.launchURL(
+              "https://www.codechef.com/users/samarth0909", w, context);
+        } else if (i == 5) {
+          globals.launchURL(
+              "https://www.hackerrank.com/profile/IT068_Samarth", w, context);
+        } else if (i == -1) {
+          globals.launchURL(url!, w, context);
+        } else if (i == 6) {
+          // File f = File("../../assets/images/Resume.pdf");
+          // print(f.absolute);
+          // await FileSaver().saveFile(name: "Resume.pdf", file: f);
+          html.AnchorElement anchorElement = html.AnchorElement(href: url);
+          anchorElement.download = url;
+          anchorElement.click();
+        }
+      },
+      child: AnimatedContainer(
+          curve: Curves.bounceOut,
+          duration: const Duration(milliseconds: 200),
+          margin: EdgeInsets.symmetric(horizontal: (w / 100) * 2),
+          padding: EdgeInsets.symmetric(
+              vertical: (h / 100) * 1, horizontal: (w / 100) * 2),
+          decoration: BoxDecoration(
+              border:
+                  Border.all(width: (w / 100) * 0.25, color: globals.blackish),
+              color: globals.brownish),
+          child:
+              Text(s, style: globals.ts((w / 100) * 5, globals.whitish, null))),
+    );
+  }
+
   Widget hoveredLinksButton(
       double w, double h, String s, int i, BuildContext context,
       [String? url]) {
@@ -212,6 +261,35 @@ class Buttons {
               title: Text(s,
                   textAlign: TextAlign.center,
                   style: globals.ts((w / 100) * 1.5, globals.blackish, null)),
+              tileColor: globals.transparent)),
+    );
+  }
+
+  Widget mcontactMeButton(
+      double w, double h, String s, Icon i, BuildContext context) {
+    return InkWell(
+      onTap: () {
+        // if (s == 'Email') {}
+        if (s == "LinkedIn") {
+          globals.launchURL(
+              "https://www.linkedin.com/in/samarth-parekh-8948492a8/",
+              w,
+              context);
+        }
+      },
+      child: Container(
+          width: w * 0.75,
+          // padding: EdgeInsets.symmetric(horizontal: 20),
+          // height: h * 0.12,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              color: globals.greyish,
+              borderRadius: const BorderRadius.all(Radius.circular(20))),
+          child: ListTile(
+              leading: i,
+              title: Text(s,
+                  textAlign: TextAlign.center,
+                  style: globals.ts((w / 100) * 4, globals.blackish, null)),
               tileColor: globals.transparent)),
     );
   }

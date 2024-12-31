@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:portfolio/CommonWidgets/Appbar.dart';
 import 'package:portfolio/CommonWidgets/Buttons.dart';
+import 'package:portfolio/CommonWidgets/Drawer.dart';
 import 'package:portfolio/CommonWidgets/Footer.dart';
 import 'package:portfolio/Providers/Projects/ProjectsProvider.dart';
 // import 'package:portfolio/Providers/Projects/ProjectsProvider.dart';
@@ -20,6 +22,7 @@ class _ProjectsState extends State<Projects> {
   Buttons bttn = Buttons();
   Appbar appbar = Appbar();
   Footer footer = Footer();
+  MyDrawer myDrawer = MyDrawer();
   Map<String, dynamic> p0 = {
         "name": "EVENTPLEX",
         "tech": [
@@ -104,26 +107,85 @@ class _ProjectsState extends State<Projects> {
       double w = constraints.maxWidth, h = constraints.maxHeight;
       List<Map<String, dynamic>> p = [p0, p1, p2, p3, p4, p5, p6];
       List<Widget> projects = List.generate(
-          6, (index) => projectDetailCard(w, h, p[index], context, index));
+          6, (index) => mProjectDetailCard(w, h, p[index], context, index));
       // projects = <Widget>[
       //   projectDetailCard(w, h, p[0], context, 0)
       //   ,...projects];
-      return Scaffold(
-          appBar: appbar.appbar(w, h, context),
+      if (constraints.maxWidth > 1200) {
+        return Scaffold(
+            appBar: appbar.appbar(w, h, context),
+            body: Container(
+                color: Colors.white,
+                width: w,
+                height: h,
+                child: SingleChildScrollView(
+                    controller: _scrollController,
+                    child: Column(children: [
+                      ...projects,
+                      footer.footer(w, h, context)
+                    ]))));
+      } else {
+        // WidgetsBinding.instance.addPostFrameCallback((_) async {
+        //   await Future.delayed(const Duration(seconds: 1));
+        //   ScaffoldMessenger.of(context).showSnackBar(
+        //       SnackBar(
+        //           backgroundColor: globals.transparent,
+        //           elevation: 0,
+        //           // dismissDirection: DismissDirection.horizontal,
+        //           content: Container(
+        //               padding: EdgeInsets.all((w / 100) * 2),
+        //               decoration: BoxDecoration(
+        //                   color: globals.greyish,
+        //                   borderRadius: BorderRadius.circular(10)),
+        //               child: Text(
+        //                 "You can tap on the image to see it enlarged.",
+        //                 style: globals.ts(
+        //                     (w / 100) * 4, globals.blackish, FontWeight.bold),
+        //               ))),
+        //       snackBarAnimationStyle: AnimationStyle(
+        //           curve: Curves.bounceIn,
+        //           duration: const Duration(seconds: 2)));
+        // });
+        return Scaffold(
+          appBar: appbar.mAppbar(w),
+          drawer: myDrawer.drawer(w, h, context),
           body: Container(
-              color: Colors.white,
               width: w,
-              height: h,
+              color: globals.whitish,
               child: SingleChildScrollView(
-                  controller: _scrollController,
                   child: Column(
-                      children: [...projects, footer.footer(w, h, context)]))));
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                    Container(
+                        margin: EdgeInsets.only(top: (h / 100) * 3),
+                        child: Text("Projects",
+                            style: globals.ts((w / 100) * 6, globals.brownish,
+                                FontWeight.bold))),
+                    Container(
+                            // margin: EdgeInsets.only(top: (h / 100) * 1),
+                            padding:
+                                EdgeInsets.symmetric(horizontal: (w / 100) * 4),
+                            child: Divider(color: globals.brownish))
+                        .animate()
+                        .scaleX(
+                            begin: 0,
+                            end: 1,
+                            duration: const Duration(milliseconds: 700),
+                            delay: const Duration(milliseconds: 300)),
+                    ...projects
+                  ]))),
+        );
+      }
     });
   }
 
+  // Widget projectSection(double w, double h) {
+  //   return SizedBox(height: h * 0.3, child: Row(children: [projectDetailCard(w, h, data, context, i)]));
+  // }
+
   Widget projectDetailCard(double w, double h, Map<String, dynamic> data,
       BuildContext context, int i) {
-    double cardWidth = w * 0.9;
+    double cardWidth = w * 0.7;
     int idx = 0;
     List<Widget> imageWidgets = List.generate(
         int.parse(data['images'].length.toString()),
@@ -220,22 +282,9 @@ class _ProjectsState extends State<Projects> {
                             textAlign: TextAlign.justify,
                             style: globals.ts(
                                 (w / 100) * 1, globals.blackish, null))),
-                    // ChangeNotifierProvider(
-                    //   create: (context) => ProjectsProvider(),
-                    //   child: Consumer<ProjectsProvider>(
-                    //       builder: (context, value, child) {
-                    //     return Container(
-                    //       margin: EdgeInsets.only(top: (h / 100) * 6),
-                    //       child: bttn.projectButton(w, h, "Source Code",
-                    //           data['code'], value.bttnClr, context),
-                    //     );
-                    //   }),
-                    // ),
-                    //  Container(
-                    //       margin: EdgeInsets.only(top: (h / 100) * 6),
-                    //       child: bttn.projectButton(w, h, "Source Code",
-                    //           data['code'], globals.brownish, context),
-                    //     ),
+
+                    // Expanded(child: Container()),
+
                     (data['live'] == null)
                         ? ChangeNotifierProvider(
                             create: (context) => ProjectsProvider(),
@@ -353,5 +402,150 @@ class _ProjectsState extends State<Projects> {
             color: globals.brownish),
         child:
             Text(s, style: globals.ts((w / 100) * 1, globals.whitish, null)));
+  }
+
+  Widget mTech(double w, double h, String s, int i, [String? url]) {
+    return Container(
+        margin: EdgeInsets.only(right: (w / 100) * 4),
+        padding: EdgeInsets.symmetric(
+            vertical: (h / 100) * 0.25, horizontal: (w / 100) * 0.5),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border:
+                Border.all(width: (w / 100) * 0.5, color: globals.transparent),
+            color: globals.greyish),
+        child:
+            Text(s, style: globals.ts((w / 100) * 3, globals.blackish, null)));
+  }
+
+  Widget mProjectDetailCard(double w, double h, Map<String, dynamic> data,
+      BuildContext context, int i) {
+    double cardWidth = w * 0.8;
+    int idx = 0;
+    List<Widget> imageWidgets = List.generate(
+        int.parse(data['images'].length.toString()),
+        (index) => InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Dialog(
+                        backgroundColor: globals.transparent.withAlpha(0),
+                        surfaceTintColor: globals.transparent.withAlpha(0),
+                        child: Stack(
+                          children: [
+                            Image.asset(
+                                'images/project/p$i/img${data['images'][idx]}.png',
+                                // width: w * 0.9,
+                                height: h * 0.9,
+                                fit: BoxFit.contain),
+                            Positioned(
+                              right: 1,
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Icon(Icons.cancel_presentation,
+                                    color: globals.whitish,
+                                    size: (w / 100) * 10),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    });
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                    // 'assets/assets/images/project/p$i/img${data['images'][index]}.png',
+                    'images/project/p$i/img${data['images'][index]}.png',
+                    // width: w*0.4,
+                    height: h * 0.3,
+                    fit: BoxFit.contain),
+              ),
+            ));
+    return Container(
+      // padding: EdgeInsets.all(10),
+      // width: w * 0.9,
+      width: cardWidth,
+      // height: h * 0.7,
+      margin: EdgeInsets.only(top: (h / 100) * 3),
+      // decoration: BoxDecoration(
+      //     border: Border.all(color: globals.blackish, width: 1.5),
+      //     borderRadius: const BorderRadius.only(
+      //         topLeft: Radius.circular(20), bottomLeft: Radius.circular(20)),
+      //     color: globals.greyish),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+                height: h * 0.2,
+                // height: h * 0.6,
+                child: ImageSlideshow(
+                  width: double.infinity,
+                  // height: h * 0.3,
+                  initialPage: 0,
+                  indicatorColor: globals.brownish,
+                  indicatorBackgroundColor: globals.greyish,
+                  onPageChanged: (value) {
+                    // print('Page changed: $value');
+                    idx = value;
+                  },
+                  autoPlayInterval: 5000,
+                  isLoop: true,
+                  children: imageWidgets,
+                )),
+            Container(
+              margin: EdgeInsets.only(top: (h / 100) * 0.75),
+              child: Text(data['name'],
+                  style: globals.ts(
+                      (w / 100) * 5, globals.brownish, FontWeight.bold)),
+            ),
+            Container(
+                margin: EdgeInsets.only(top: (h / 100) * 1),
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                        children: List.generate(data['tech'].length,
+                            (idx) => mTech(w, h, data['tech'][idx], idx))))),
+            Container(
+                margin: EdgeInsets.only(top: (h / 100) * 1),
+                child: Text(data['desc'],
+                    textAlign: TextAlign.justify,
+                    style: globals
+                        .ts((w / 100) * 3.5, globals.blackish, null)
+                        .copyWith(height: 1.5))),
+            Container(
+                margin: EdgeInsets.only(top: (h / 100) * 2),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      mLinkButton(w, h, "Code", data['code']),
+                      (data['live'] == null)
+                          ? Container()
+                          : mLinkButton(w, h, "Demo", data['live'])
+                    ])),
+            Container(
+                margin: EdgeInsets.only(top: (h / 100) * 2),
+                child: Divider(thickness: 1, color: globals.brownish))
+          ]),
+    );
+  }
+
+  Widget mLinkButton(double w, double h, String s, String url) {
+    return InkWell(
+      onTap: () {
+        globals.launchURL(url, w, context);
+      },
+      child: Container(
+          padding: EdgeInsets.symmetric(
+              vertical: (h / 100) * 1, horizontal: (w / 100) * 2),
+          decoration: BoxDecoration(
+              color: globals.brownish, borderRadius: BorderRadius.circular(5)),
+          child:
+              Text(s, style: globals.ts((w / 100) * 4, globals.whitish, null))),
+    );
   }
 }
