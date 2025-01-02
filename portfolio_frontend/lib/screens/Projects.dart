@@ -107,6 +107,8 @@ class _ProjectsState extends State<Projects> {
       double w = constraints.maxWidth, h = constraints.maxHeight;
       List<Map<String, dynamic>> p = [p0, p1, p2, p3, p4, p5, p6];
       List<Widget> projects = List.generate(
+          6, (index) => projectDetailCard(w, h, p[index], context, index));
+      List<Widget> mprojects = List.generate(
           6, (index) => mProjectDetailCard(w, h, p[index], context, index));
       // projects = <Widget>[
       //   projectDetailCard(w, h, p[0], context, 0)
@@ -172,7 +174,7 @@ class _ProjectsState extends State<Projects> {
                             end: 1,
                             duration: const Duration(milliseconds: 700),
                             delay: const Duration(milliseconds: 300)),
-                    ...projects
+                    ...mprojects
                   ]))),
         );
       }
