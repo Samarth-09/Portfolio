@@ -13,7 +13,7 @@ class Appbar {
       surfaceTintColor: Colors.white,
       foregroundColor: Colors.white,
       shadowColor: Colors.white,
-      title: Image.asset('/images/logo.png',
+      title: Image.asset('./assets/images/logo.png',
           width: (w / 100) * 12, height: (h / 100) * 7, fit: BoxFit.fill),
       actions: [
         ChangeNotifierProvider(
@@ -54,7 +54,7 @@ class Appbar {
       scrolledUnderElevation: 0,
       centerTitle: true,
       title: Image.asset(
-        "/images/logo.png",
+        "./assets/images/logo.png",
         width: w * 0.3,
         fit: BoxFit.contain,
       ),

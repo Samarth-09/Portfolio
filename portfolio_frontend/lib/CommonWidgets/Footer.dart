@@ -18,9 +18,8 @@ class Footer {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(
-              // 'assets/assets/images/logo.png',
-              'images/logo.png',
+          Image.asset('./assets/images/logo.png',
+              // 'images/logo.png',
               width: (w / 100) * 12,
               height: (h / 100) * 7,
               fit: BoxFit.contain),

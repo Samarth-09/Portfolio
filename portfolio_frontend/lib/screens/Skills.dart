@@ -116,7 +116,7 @@ class _SkillsState extends State<Skills> with TickerProviderStateMixin {
                         ),
                         Container(
                           margin: EdgeInsets.only(left: (w / 100) * 2),
-                          child: Image.asset("./images/c3.png",
+                          child: Image.asset("./assets/images/c3.png",
                               width: (w / 100) * 5,
                               height: (h / 100) * 7,
                               fit: BoxFit.fill),
@@ -516,10 +516,10 @@ class _SkillsState extends State<Skills> with TickerProviderStateMixin {
               child: GridView.count(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                mainAxisSpacing: (w / 100) * 1,
-                crossAxisSpacing: (h / 100) * 1.5,
-                crossAxisCount: 4,
-                // childAspectRatio: ((w / 100) * 3) / ((h / 100) * 0.75),
+                mainAxisSpacing: (w / 100) * 2,
+                crossAxisSpacing: (h / 100) * 2.5,
+                crossAxisCount: 2,
+                childAspectRatio: ((w / 100) * 6) / ((h / 100) * 1),
                 children: List.generate(l.length, (index) {
                   bool is2words = false;
                   List x = l[index].split(' ');

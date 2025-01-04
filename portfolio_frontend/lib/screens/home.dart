@@ -101,43 +101,44 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
   Buttons button = Buttons();
   Map<String, dynamic> mp = {
     "p0": {
-      "img": "images/project/p0/img1.png",
+      "img": "./assets/images/project/p0/img1.png",
+      // "img": "images/project/p0/img1.png",
       "name": "EventPlex",
       "link": "https://github.com/Samarth-09/EventPlex"
     },
     "p1": {
-      // "img": "assets/assets/images/smartdiagnosehub.jpg",
-      "img": "images/smartdiagnosehub.jpg",
+      "img": "./assets/images/smartdiagnosehub.jpg",
+      // "img": "images/smartdiagnosehub.jpg",
       "name": "SmartDiagnoseHub",
       "link": "https://github.com/Samarth-09/SmartDaignoseHub"
     },
     "p2": {
-      // "img": "assets/assets/images/mymoney.png",
-      "img": "images/mymoney.png",
+      "img": "./assets/images/mymoney.png",
+      // "img": "images/mymoney.png",
       "name": "MyMoney",
       "link": "https://github.com/Samarth-09/mymoney"
     },
     "p3": {
-      // "img": "assets/assets/images/doubtbuddy.png",
-      "img": "images/doubtbuddy.png",
+      "img": "./assets/images/doubtbuddy.png",
+      // "img": "images/doubtbuddy.png",
       "name": "DoubtBuddy24x7",
       "link": "https://github.com/manav278/DotSlash7.0-DoubtBuddy24x7"
     },
     "p4": {
-      // "img": "assets/assets/images/stcportal.png",
-      "img": "images/stcportal.png",
+      "img": "./assets/images/stcportal.png",
+      // "img": "images/stcportal.png",
       "name": "STC-Portal",
       "link": "https://github.com/Samarth-09/stc_portal"
     },
     "p5": {
-      // "img": "assets/assets/images/ngoally.png",
-      "img": "images/ngoally.png",
+      "img": "./assets/images/ngoally.png",
+      // "img": "images/ngoally.png",
       "name": "NGOAlly",
       "link": "https://github.com/Samarth-09/NGOAlly"
     },
     "p6": {
-      // "img": "assets/assets/images/calc.jpeg",
-      "img": "images/calc.jpeg",
+      "img": "./assets/images/calc.jpeg",
+      // "img": "images/calc.jpeg",
       "name": "Calculator",
       "link": "https://github.com/Samarth-09/calculator"
     },
@@ -297,7 +298,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                           child: Opacity(
                                             opacity: value,
                                             child: Image.asset(
-                                              "./images/Photo.jpg",
+                                              "./assets/images/Photo.jpg",
                                               width: w * 0.28 * value,
                                               height: h * 0.71 * value,
                                               fit: BoxFit.fill,
@@ -459,7 +460,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                               top: (h / 100) * 25,
                               right: (w / 100) * 28,
                               // right: (w / 100) * 31,
-                              child: Image.asset("./images/c1.png",
+                              child: Image.asset("./assets/images/c1.png",
                                   width: (w / 100) * 5.5,
                                   height: (h / 100) * 9,
                                   fit: BoxFit.fill)),
@@ -567,7 +568,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                               6,
                                               context,
                                               value,
-                                              "../../assets/images/Resume.pdf"),
+                                              "../../assets/assets/images/Resume.pdf"),
                                         );
                                       })),
                                 );
@@ -640,7 +641,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                 milliseconds: 1500),
                                             begin: -1,
                                             end: 0),
-                                    Image.asset("/images/home4.png",
+                                    Image.asset("./assets/images/home4.png",
                                         fit: BoxFit.fill,
                                         width: w * 0.4,
                                         height: h * 0.7)
@@ -791,7 +792,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
-                                    Image.asset("/images/home3.png",
+                                    Image.asset("/assets/images/home3.png",
                                         fit: BoxFit.fill,
                                         width: w * 0.4,
                                         height: h * 0.7),
@@ -824,7 +825,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                   margin: EdgeInsets.only(
                                                       top: (h / 100) * 5),
                                                   child: Text(
-                                                      "--> 350+ DSA problems\n--> 50+ SQl Problems65 days of Max Streak",
+                                                      "--> 350+ DSA problems\n--> 50+ SQL Problems\n-->65 days of Max Streak",
                                                       style: globals.ts(
                                                           (w / 100) * 1.25,
                                                           globals.blackish,
@@ -889,7 +890,8 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                       Alignment.centerRight,
                                                   margin: const EdgeInsets.only(
                                                       top: 5),
-                                                  child: Text("...on HakerRank",
+                                                  child: Text(
+                                                      "...on HackerRank",
                                                       style: globals.ts(
                                                           (w / 100) * 1.25,
                                                           globals.blackish,
@@ -1092,7 +1094,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                             child: Opacity(
                                               opacity: value,
                                               child: Image.asset(
-                                                "./images/Photo.jpg",
+                                                "./assets/images/Photo.jpg",
                                                 width: w * 0.55 * value,
                                                 height: h * 0.3 * value,
                                                 fit: BoxFit.fill,
@@ -1220,7 +1222,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                                     6,
                                                     context,
                                                     // value,
-                                                    "../../assets/images/Resume.pdf"),
+                                                    "../../assets/assets/images/Resume.pdf"),
                                               );
                                             }));
                                       }),
@@ -1298,7 +1300,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                         horizontal: (w / 100) * 4),
                                     margin: EdgeInsets.only(top: (h / 100) * 2),
                                     child: Text(
-                                        "--> 350+ DSA problems\n--> 50+ SQl Problems65 days of Max Streak",
+                                        "--> 350+ DSA problems\n--> 50+ SQL Problems\n-->65 days of Max Streak",
                                         style: globals.ts((w / 100) * 4,
                                             globals.blackish, null)),
                                   ),
@@ -1360,7 +1362,7 @@ class _homeState extends State<home> with SingleTickerProviderStateMixin {
                                         horizontal: (w / 100) * 4),
                                     alignment: Alignment.centerRight,
                                     margin: const EdgeInsets.only(top: 5),
-                                    child: Text("...on HakerRank",
+                                    child: Text("...on HackerRank",
                                         style: globals.ts((w / 100) * 3,
                                             globals.blackish, null)),
                                   )

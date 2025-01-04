@@ -228,8 +228,8 @@ class _ProjectsState extends State<Projects> {
                     });
               },
               child: Image.asset(
-                // 'assets/assets/images/project/p$i/img${data['images'][index]}.png',
-                'images/project/p$i/img${data['images'][index]}.png',
+                './assets/images/project/p$i/img${data['images'][index]}.png',
+                // 'images/project/p$i/img${data['images'][index]}.png',
                 // width: w*0.4,
                 height: h * 0.6,
                 // fit: BoxFit.fill
@@ -437,7 +437,7 @@ class _ProjectsState extends State<Projects> {
                         child: Stack(
                           children: [
                             Image.asset(
-                                'images/project/p$i/img${data['images'][idx]}.png',
+                                './assets/images/project/p$i/img${data['images'][idx]}.png',
                                 // width: w * 0.9,
                                 height: h * 0.9,
                                 fit: BoxFit.contain),
@@ -460,8 +460,8 @@ class _ProjectsState extends State<Projects> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
-                    // 'assets/assets/images/project/p$i/img${data['images'][index]}.png',
-                    'images/project/p$i/img${data['images'][index]}.png',
+                    './assets/images/project/p$i/img${data['images'][index]}.png',
+                    // 'images/project/p$i/img${data['images'][index]}.png',
                     // width: w*0.4,
                     height: h * 0.3,
                     fit: BoxFit.contain),
